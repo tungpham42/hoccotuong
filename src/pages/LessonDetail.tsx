@@ -39,12 +39,24 @@ const LessonDetail: React.FC = () => {
 
   const lesson = id ? getLessonById(id) : undefined;
 
-  // Reset local state when navigating to a new lesson
+  // Reset local state and read completed status from localStorage when navigating to a new lesson
   useEffect(() => {
-    setCompleted(false);
+    if (lesson) {
+      const storedCompleted = JSON.parse(
+        localStorage.getItem("completedLessons") || "[]",
+      );
+      if (storedCompleted.includes(lesson.id)) {
+        setCompleted(true);
+      } else {
+        setCompleted(false);
+      }
+    } else {
+      setCompleted(false);
+    }
+
     setSelectedAnswers({});
     setShowErrors(false);
-  }, [id]);
+  }, [id, lesson]);
 
   if (!lesson) {
     return (
@@ -96,6 +108,16 @@ const LessonDetail: React.FC = () => {
 
     // Success flow
     setCompleted(true);
+
+    // Save the completed lesson ID to localStorage
+    const storedCompleted = JSON.parse(
+      localStorage.getItem("completedLessons") || "[]",
+    );
+    if (!storedCompleted.includes(lesson.id)) {
+      storedCompleted.push(lesson.id);
+      localStorage.setItem("completedLessons", JSON.stringify(storedCompleted));
+    }
+
     message.success({
       content: "Chúc mừng! Bạn đã hoàn thành bài học và mở khóa bài tiếp theo!",
       style: {

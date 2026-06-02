@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   Row,
@@ -23,9 +23,18 @@ const { Title, Paragraph, Text } = Typography;
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const completedLessons = 0;
+  const [completedLessons, setCompletedLessons] = useState(0);
   const totalLessons = lessons.length;
-  const progress = (completedLessons / totalLessons) * 100;
+
+  useEffect(() => {
+    const storedCompleted = JSON.parse(
+      localStorage.getItem("completedLessons") || "[]",
+    );
+    setCompletedLessons(storedCompleted.length);
+  }, []);
+
+  const progress =
+    totalLessons === 0 ? 0 : (completedLessons / totalLessons) * 100;
 
   return (
     <div style={{ maxWidth: "1000px" }}>
