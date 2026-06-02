@@ -1,0 +1,116 @@
+/* src/App.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #fdfbf7; /* Warm, cozy off-white */
+  color: #332b26;
+  margin: 0;
+  padding: 0;
+}
+
+.markdown-content {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #4a423d;
+}
+
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 24px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.markdown-content table th,
+.markdown-content table td {
+  border-bottom: 1px solid #f0e9e4;
+  padding: 16px;
+  text-align: left;
+}
+
+.markdown-content table th {
+  background: #f8f4f0;
+  font-weight: 600;
+  color: #5c4e45;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #b05d3a;
+  background: #fdfaf7;
+  padding: 16px 20px;
+  margin: 24px 0;
+  color: #6d5d54;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+}
+
+.markdown-content pre {
+  background: #2d2622;
+  padding: 20px;
+  border-radius: 12px;
+  overflow-x: auto;
+  color: #e8e3df;
+}
+
+.markdown-content code {
+  background: #f5f0ec;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  color: #b05d3a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfbf7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c8bf;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b5a59a;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ant-card {
+  animation: fadeIn 0.4s ease-out;
+  box-shadow: 0 4px 16px rgba(109, 93, 84, 0.04) !important;
+  border-color: #f0e9e4 !important;
+}
+
+/* Add this to your stylesheet */
+.equal-height-row-list .ant-row > div {
+  display: flex;
+}
+
+.equal-height-row-list .ant-list-item {
+  width: 100%;
+  display: flex;
+}
